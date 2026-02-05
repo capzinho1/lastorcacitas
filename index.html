@@ -15,12 +15,6 @@
 </head>
 <body class="theme-rustic">
     
-    <!-- Panel de Selección de Tema -->
-    <div class="theme-selector">
-        <button onclick="setTheme('rustic')" class="theme-btn theme-btn-rustic" aria-label="Tema rústico" title="Rústico"></button>
-        <button onclick="setTheme('minimal')" class="theme-btn theme-btn-minimal" aria-label="Tema minimalista" title="Minimalista"></button>
-        <button onclick="setTheme('colorful')" class="theme-btn theme-btn-colorful" aria-label="Tema colorido" title="Colorido"></button>
-    </div>
 
     <!-- Navegación -->
     <nav class="navbar" id="navbar">
@@ -177,56 +171,40 @@
         </div>
     </section>
 
-
-
-            <!-- Slider de Piscinas -->
-            <section class="section-mosaico">
-                <div class="container">
-                    
-                    <div class="mosaic-grid">
-                        <div class="mosaic-item item-1">
-                            <img src="img/piscinagrande.png" alt="Foto 1">
-                        </div>
-                        
-                        <div class="mosaic-item item-2">
-                            <img src="img/mediana..jpg" alt="Foto 2">
-                        </div>
-                        
-                        <div class="mosaic-item item-3">
-                            <img src="img/niños.png" alt="Foto 3">
-                        </div>
-                        
-                        <div class="mosaic-item item-4">
-                            <img src="img/mediana.png" alt="Foto 4">
-                        </div>
-                        
-                        <div class="mosaic-item item-5">
-                            <img src="img/pis1.png" alt="Foto 5">
-                        </div>
-                        <div class="mosaic-item item-6">
-                            <img src="img/pis2.png" alt="Foto 5">
-                        </div>
-                        <div class="mosaic-item item-6">
-                            <img src="img/pis3.png" alt="Foto 5">
-                        </div>
-                    </div>
+    <!-- Sección Mosaico Piscinas -->
+    <section id="piscinas" class="section-mosaico">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Diversión</span>
+                <h2 class="section-title">Piscinas</h2>
+            </div>
+            
+            <div class="mosaic-grid">
+                <div class="mosaic-item item-1">
+                    <img src="img/piscinagrande.png" alt="Foto 1">
                 </div>
-            </section>
                 
-                <!-- Controles del slider -->
-                <button class="slider-btn slider-btn-prev" onclick="movePoolSlider(-1)" aria-label="Anterior">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button class="slider-btn slider-btn-next" onclick="movePoolSlider(1)" aria-label="Siguiente">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
+                <div class="mosaic-item item-2">
+                    <img src="img/mediana..jpg" alt="Foto 2">
+                </div>
                 
-                <!-- Indicadores -->
-                <div class="slider-dots" id="poolSliderDots"></div>
+                <div class="mosaic-item item-3">
+                    <img src="img/niños.png" alt="Foto 3">
+                </div>
+                
+                <div class="mosaic-item item-4">
+                    <img src="img/mediana.png" alt="Foto 4">
+                </div>
+                
+                <div class="mosaic-item item-5">
+                    <img src="img/pis1.png" alt="Foto 5">
+                </div>
+                <div class="mosaic-item item-6">
+                    <img src="img/pis2.png" alt="Foto 5">
+                </div>
+                <div class="mosaic-item item-6">
+                    <img src="img/pis3.png" alt="Foto 5">
+                </div>
             </div>
 
             <div class="pools-features">
@@ -325,48 +303,46 @@
 
                     <a href="https://wa.me/56995626217?text=Hola, me interesa la zona de camping" class="btn-primary" target="_blank">Reservar Sitio</a>
                 </div>
-                <div class="cabin-slider"> <div class="slider-container">
-                    <div class="slider-track" id="campingSliderTrack">
-                        <div class="slider-slide">
-                            <img src="img/zonadecamping.png" alt="Zona de Camping">
+                <div class="cabin-slider">
+                    <div class="slider-container">
+                        <div class="slider-track" id="campingSliderTrack">
+                            <div class="slider-slide">
+                                <img src="img/zonadecamping.png" alt="Zona de Camping">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/camping.png" alt="Camping familiar">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/descanso1.png" alt="Camping familiar">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/descanso2.png" alt="Camping familiar">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/descanso3.png" alt="Camping familiar">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/descanso4.png" alt="Camping familiar">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/descanso5.png" alt="Camping familiar">
+                            </div>
                         </div>
-                        <div class="slider-slide">
-                            <img src="img/camping.png" alt="Camping familiar">
-                        </div>
-                        <div class="slider-slide">
-                            <img src="img/descanso1.png" alt="Camping familiar">
-                        </div>
-                        <div class="slider-slide">
-                            <img src="img/descanso2.png" alt="Camping familiar">
-                        </div>
-                        <div class="slider-slide">
-                            <img src="img/descanso3.png" alt="Camping familiar">
-                        </div>
-                        <div class="slider-slide">
-                            <img src="img/descanso4.png" alt="Camping familiar">
-                        </div>
-                        <div class="slider-slide">
-                            <img src="img/descanso5.png" alt="Camping familiar">
-                        </div>
-                        
-                    
                     </div>
+                    
+                    <button class="slider-btn slider-btn-prev" onclick="moveCampingSlider(-1)" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="slider-btn slider-btn-next" onclick="moveCampingSlider(1)" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    
+                    <div class="slider-dots" id="campingSliderDots"></div>
                 </div>
-                
-                <button class="slider-btn slider-btn-prev" onclick="moveCampingSlider(-1)" aria-label="Anterior">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button class="slider-btn slider-btn-next" onclick="moveCampingSlider(1)" aria-label="Siguiente">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
-                
-                <div class="slider-dots" id="campingSliderDots"></div>
-            </div>
-            </div>
             </div>
         </div>
     </section>
@@ -501,40 +477,37 @@
             </div>
 
             <!-- Slider de Restaurante -->
-            <div class="cabin-slider"> <div class="slider-container">
-                <div class="slider-track" id="restaurantSliderTrack">
-                    <div class="slider-slide">
-                        <img src="img/restorant1.png" alt="Interior del Restaurante">
-                    </div>
-                    
-                    <div class="slider-slide">
-                        <img src="img/restorant2.png" alt="Platos preparados">
-                    </div>
-                    
-                    <div class="slider-slide">
-                        <img src="img/restaurant.png" alt="Fachada Restaurante">
-                    </div>
-                    <div class="slider-slide">
-                        <img src="img/resto.png" alt="Fachada Restaurante">
+            <div class="cabin-slider">
+                <div class="slider-container">
+                    <div class="slider-track" id="restaurantSliderTrack">
+                        <div class="slider-slide">
+                            <img src="img/restorant1.png" alt="Interior del Restaurante">
+                        </div>
+                        
+                        <div class="slider-slide">
+                            <img src="img/restorant2.png" alt="Platos preparados">
+                        </div>
+                        
+                        <div class="slider-slide">
+                            <img src="img/restaurant.png" alt="Fachada Restaurante">
+                        </div>
+                        <div class="slider-slide">
+                            <img src="img/resto.png" alt="Fachada Restaurante">
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <button class="slider-btn slider-btn-prev" onclick="moveRestaurantSlider(-1)" aria-label="Anterior">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            <button class="slider-btn slider-btn-next" onclick="moveRestaurantSlider(1)" aria-label="Siguiente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
-            
-            <div class="slider-dots" id="restaurantSliderDots"></div>
-        </div>
                 
-                <!-- Indicadores -->
+                <button class="slider-btn slider-btn-prev" onclick="moveRestaurantSlider(-1)" aria-label="Anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="slider-btn slider-btn-next" onclick="moveRestaurantSlider(1)" aria-label="Siguiente">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+                
                 <div class="slider-dots" id="restaurantSliderDots"></div>
             </div>
         </div>

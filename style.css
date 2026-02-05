@@ -137,84 +137,6 @@ ul {
 }
 
 
-/* ========================================
-   SELECTOR DE TEMAS
-   ======================================== */
-
-.theme-selector {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    padding: 10px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform var(--transition);
-}
-
-.theme-selector:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
-
-.theme-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition);
-    border: 2px solid transparent;
-    position: relative;
-}
-
-.theme-btn::before {
-    content: attr(title);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.8);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-    margin-bottom: 8px;
-}
-
-.theme-btn:hover::before {
-    opacity: 1;
-}
-
-.theme-btn-rustic {
-    background: linear-gradient(135deg, #2D3E28, #6B8E23);
-}
-
-.theme-btn-minimal {
-    background: white;
-    border-color: #000;
-}
-
-.theme-btn-colorful {
-    background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
-}
-
-.theme-btn:hover {
-    transform: scale(1.15);
-}
-
 
 /* ========================================
    NAVEGACIÓN
@@ -786,158 +708,68 @@ ul {
 
 
 /* ========================================
-   SLIDER DE PISCINAS (CORREGIDO PARA TEXTO)
+   SECCIÓN MOSAICO PISCINAS
    ======================================== */
 
-.section-piscinas {
-    background: var(--color-bg);
+.section-mosaico {
+    padding: 60px 20px;
+    background-color: var(--color-bg);
 }
 
-.pools-slider {
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 250px;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.mosaic-item {
     position: relative;
-    /* Altura suficiente para fotos verticales */
-    height: 600px; 
-    margin-bottom: 40px;
-    box-shadow: var(--shadow-lg);
-    border-radius: var(--radius-lg);
+    border-radius: 16px;
     overflow: hidden;
-    background: #f5f5f5;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
-.theme-minimal .pools-slider {
-    border: 3px solid var(--color-primary);
+.mosaic-item:hover {
+    transform: scale(1.02);
+    z-index: 2;
 }
 
-.pools-slider .slider-container {
-    height: 100%;
-    width: 100%;
-}
-
-.pools-slider .slider-track {
-    display: flex;
-    height: 100%;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform;
-}
-
-/* ESTILO PARA GALERÍA DE 3 IMÁGENES */
-.pools-slider .slider-slide {
-    /* Muestra 3 imágenes por vista en escritorio */
-    min-width: 33.333%; 
-    flex-shrink: 0;
-    height: 100%;
-    position: relative;
-    border-right: 1px solid rgba(255,255,255,0.3); 
-    box-sizing: border-box;
-}
-
-.pools-slider .slider-slide:last-child {
-    border-right: none;
-}
-
-.pools-slider .slider-slide img {
+.mosaic-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
-    transition: transform 0.5s ease;
 }
 
-.pools-slider .slider-slide:hover img {
-    transform: scale(1.05);
+.item-1 {
+    grid-column: span 2;
+    grid-row: span 2;
 }
 
-/* CORRECCIÓN: Ajuste del Overlay para que el texto NO se corte */
-.pools-slider .slider-slide-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /* Reducimos el padding lateral para dar más espacio real al texto */
-    padding: 30px 15px; 
-    
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 70%, transparent 100%);
-    color: var(--color-white);
-    
-    /* Alineación izquierda para mejor lectura en columnas estrechas */
-    text-align: left; 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    
-    box-sizing: border-box;
-    width: 100%;
-    
-    /* Importante: permite ver el contenido si sobresale un poco */
-    overflow: visible; 
+.item-2 {
+    grid-column: span 1;
+    grid-row: span 1;
 }
 
-.pools-slider .slider-slide-overlay h3 {
-    font-family: var(--font-display);
-    /* Tamaño dinámico: se achica automáticamente si falta espacio */
-    font-size: clamp(18px, 2.5vw, 24px); 
-    font-weight: 700;
-    color: var(--color-white);
-    margin-bottom: 8px;
-    
-    text-align: left;
-    width: 100%;
-    margin-left: 0; 
-    
-    /* Forzar salto de línea si la palabra es muy larga */
-    white-space: normal;
-    word-wrap: break-word;
-    hyphens: auto;
+.item-3 {
+    grid-column: span 1;
+    grid-row: span 2;
 }
 
-.pools-slider .slider-slide-overlay p {
-    font-size: clamp(13px, 1.5vw, 15px);
-    opacity: 0.9;
-    line-height: 1.4;
-    
-    text-align: left;
-    width: 100%;
-    margin-left: 0;
-    
-    /* Asegurar que el texto baje de línea */
-    white-space: normal;
-    word-wrap: break-word;
+.item-4 {
+    grid-column: span 1;
+    grid-row: span 1;
 }
 
-/* RESPONSIVE: VOLVER A 1 IMAGEN EN MÓVILES */
-@media (max-width: 768px) {
-    .pools-slider {
-        height: 500px; /* Altura ajustada para móvil */
-    }
-    
-    .pools-slider .slider-slide {
-        /* En móvil volvemos a mostrar 1 sola imagen */
-        min-width: 100%; 
-        border-right: none;
-    }
-
-    .pools-slider .slider-slide-overlay {
-        padding: 25px 20px;
-    }
-    
-    /* En móvil podemos centrar porque hay espacio de sobra */
-    .pools-slider .slider-slide-overlay h3 {
-        font-size: 28px;
-        text-align: center;
-    }
-    
-    .pools-slider .slider-slide-overlay p {
-        text-align: center;
-    }
-    
-    .pools-slider .slider-slide-overlay {
-        align-items: center;
-    }
+.item-5 {
+    grid-column: span 2;
+    grid-row: span 1;
 }
 
-/* Estilos para las características de piscinas */
 .pools-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1025,72 +857,6 @@ ul {
 .restaurant-description strong {
     color: var(--color-primary);
     font-weight: 700;
-}
-
-.restaurant-slider {
-    position: relative;
-    height: 600px;
-    margin-bottom: 40px;
-    box-shadow: var(--shadow-lg);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: #f5f5f5;
-}
-
-.theme-minimal .restaurant-slider {
-    border: 3px solid var(--color-primary);
-}
-
-.restaurant-slider .slider-container {
-    height: 100%;
-    width: 100%;
-}
-
-.restaurant-slider .slider-track {
-    display: flex;
-    height: 100%;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform;
-}
-
-/* ESTILO PARA GALERÍA DE 2 IMÁGENES */
-.restaurant-slider .slider-slide {
-    min-width: 50%;
-    flex-shrink: 0;
-    height: 100%;
-    position: relative;
-    border-right: 1px solid rgba(255,255,255,0.3);
-    box-sizing: border-box;
-}
-
-.restaurant-slider .slider-slide:last-child {
-    border-right: none;
-}
-
-.restaurant-slider .slider-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-/* Efecto Zoom al pasar el mouse por una foto */
-.restaurant-slider .slider-slide:hover img {
-    transform: scale(1.05);
-}
-
-/* RESPONSIVE: VOLVER A 1 IMAGEN EN MÓVILES */
-@media (max-width: 768px) {
-    .restaurant-slider {
-        height: 500px;
-    }
-    
-    .restaurant-slider .slider-slide {
-        min-width: 100%;
-        border-right: none;
-    }
 }
 
 
@@ -1523,105 +1289,146 @@ ul {
    RESPONSIVE (CORREGIDO PARA VERCEL/MÓVIL)
    ======================================== */
 
-   @media (max-width: 1024px) {
+@media (max-width: 1024px) {
     .camping-layout, .cabanas-grid, .footer-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
     
     .cabin-slider, .pools-slider, .restaurant-slider {
-        /* Altura intermedia para tablets */
-        height: 400px; 
+        height: 400px;
     }
     
     .cabin-features-grid {
-        grid-template-columns: 1fr 1fr; /* Mantener 2 columnas en tablet */
+        grid-template-columns: 1fr 1fr;
     }
-}
-
-@media (max-width: 768px) {
-    /* 1. ARREGLO DEL HERO (FONDO GIGANTE) */
-    .hero {
-        /* iOS rompe con fixed, usamos scroll */
-        background-attachment: scroll !important; 
-        background-position: center center !important;
-        /* dvh se adapta mejor a las barras del navegador móvil */
-        height: 90dvh; 
-        min-height: 600px;
-    }
-
-    /* 2. ARREGLO DE NAVEGACIÓN */
-    .nav-container {
-        padding: 16px 20px;
+    
+    /* CORRECCIÓN: Mostrar menú hamburguesa en tablets */
+    .menu-toggle {
+        display: flex;
+        z-index: 1001;
     }
     
     .nav-menu {
         position: fixed;
-        top: 70px; /* Ajustado a la altura real del navbar */
+        top: 90px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px); /* Ocupar el resto de la pantalla */
-        background: rgba(255, 255, 255, 0.98); /* Más sólido para leer mejor */
+        height: calc(100vh - 90px);
+        background: rgba(255, 255, 255, 0.98);
         flex-direction: column;
-        justify-content: center; /* Centrar items verticalmente */
+        justify-content: center;
         padding: 20px;
         gap: 25px;
         transition: left 0.3s ease-in-out;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ARREGLO DEL HERO */
+    .hero {
+        background-attachment: scroll !important;
+        background-position: center center !important;
+        height: 90dvh;
+        min-height: 600px;
+    }
+
+    /* ARREGLO DE NAVEGACIÓN */
+    .nav-container {
+        padding: 16px 20px;
+    }
+    
+    /* CORRECCIÓN: Asegurar que el menú hamburguesa sea visible */
+    .menu-toggle {
+        display: flex !important;
+        z-index: 1001;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        gap: 25px;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
     }
     
     .nav-menu.active {
         left: 0;
     }
 
-    /* 3. ARREGLO DE SLIDERS (ELIMINAR EL EFECTO "DESCUADRADO") */
-    /* Reducimos la altura para que la imagen no se recorte tanto a los lados */
-    .pools-slider, 
-    .restaurant-slider {
-        height: 300px !important; /* Bajamos de 500px a 300px */
-    }
-
+    /* ARREGLO DE SLIDERS */
     .cabin-slider {
         height: 280px !important;
     }
 
     .slider-slide img {
-        /* Aseguramos que la imagen cubra sin estirarse */
-        object-fit: cover; 
+        object-fit: cover;
         object-position: center;
     }
-    
-    /* Mostrar 1 sola imagen en sliders */
-    .pools-slider .slider-slide,
-    .restaurant-slider .slider-slide {
-        min-width: 100%;
-        border-right: none;
-    }
 
-    /* Ajuste de textos sobre las imágenes */
-    .pools-slider .slider-slide-overlay h3 {
-        font-size: 20px; /* Un poco más pequeño para que quepa */
-    }
-
-    /* 4. ARREGLO DE BOTONES DEL SLIDER */
+    /* BOTONES DEL SLIDER */
     .slider-btn {
         width: 35px;
         height: 35px;
-        background: rgba(255, 255, 255, 0.6); /* Más transparente */
+        background: rgba(255, 255, 255, 0.6);
     }
     
-    /* 5. ARREGLO DEL SELECTOR DE TEMAS */
-    /* Lo hacemos más pequeño para que no tape el contenido */
+    /* SELECTOR DE TEMAS */
     .theme-selector {
         bottom: 15px;
         right: 15px;
         padding: 6px;
         transform: scale(0.9);
     }
+    
+    /* MOSAICO RESPONSIVE */
+    .mosaic-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 90px;
+        gap: 10px;
+    }
+
+    .item-1 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .item-2 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .item-3 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+
+    .item-4 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    
+    .item-5 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 36px; /* Texto más pequeño en celulares chicos */
+        font-size: 36px;
     }
     
     .section-title {
@@ -1632,150 +1439,7 @@ ul {
         height: 250px;
     }
 
-    /* Ajuste final para pantallas muy pequeñas */
-    .pools-slider, 
-    .restaurant-slider {
-        height: 280px !important;
+    .cabin-slider {
+        height: 250px !important;
     }
 }
-
-/* ======================================================
-   CORRECCIÓN FINAL: SLIDER PISCINAS (1 SOLA IMAGEN)
-   ====================================================== */
-
-/* Forzar que cada slide ocupe el 100% del ancho (igual que cabañas) */
-.pools-slider .slider-slide {
-    min-width: 100% !important; /* Antes era 33.333% */
-    border-right: none !important;
-}
-
-/* Ajustar la altura para que sea consistente con los otros sliders */
-.pools-slider {
-    height: 500px; /* Altura estándar cómoda */
-}
-
-/* Opcional: Ajustar el overlay para que se vea bien en pantalla completa */
-.pools-slider .slider-slide-overlay {
-    padding: 40px; /* Más espacio ya que la imagen es grande */
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%); /* Degradado más suave */
-}
-
-.pools-slider .slider-slide-overlay h3 {
-    font-size: 32px !important; /* Texto más grande para aprovechar el espacio */
-    margin-bottom: 10px !important;
-}
-
-.pools-slider .slider-slide-overlay p {
-    font-size: 18px !important;
-}
-
-/* =========================================
-   ESTILOS MOSAICO (BENTO GRID)
-   ========================================= */
-
-   .section-mosaico {
-    padding: 60px 20px;
-    background-color: var(--color-bg); /* Usa el fondo de tu tema */
-}
-
-.mosaic-grid {
-    display: grid;
-    /* PC: 4 columnas iguales */
-    grid-template-columns: repeat(4, 1fr);
-    /* Altura automática de filas (aprox 200px cada una) */
-    grid-auto-rows: 250px; 
-    gap: 15px; /* Espacio entre fotos */
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.mosaic-item {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.mosaic-item:hover {
-    transform: scale(1.02); /* Efecto zoom suave al pasar mouse */
-    z-index: 2;
-}
-
-.mosaic-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* CLAVE: Rellena el hueco sin deformar la foto */
-    display: block;
-}
-
-/* --- PATRÓN IRREGULAR (PC) --- */
-
-/* Item 1: El protagonista (Ocupa 2 columnas y 2 filas) */
-.item-1 {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-/* Item 2: Normal (1x1) */
-.item-2 {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-/* Item 3: Alto (Vertical, ocupa 1 columna pero 2 filas) */
-.item-3 {
-    grid-column: span 1;
-    grid-row: span 2;
-}
-
-/* Item 4: Normal (1x1) */
-.item-4 {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-/* Item 5: Ancho (Ocupa 2 columnas abajo) */
-.item-5 {
-    grid-column: span 2;
-    grid-row: span 1;
-}
-
-
-/* --- RESPONSIVE (CELULARES) --- */
-@media (max-width: 768px) {
-    .mosaic-grid {
-        /* En móvil pasamos a 2 columnas */
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 90px; /* Filas un poco más bajas */
-        gap: 10px;
-    }
-
-    /* Reordenamos el patrón para 2 columnas */
-    
-    .item-1 {
-        grid-column: span 2; /* Ocupa todo el ancho */
-        grid-row: span 2;    /* Altura doble (Foto principal grande) */
-    }
-
-    .item-2 {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
-
-    .item-3 {
-        grid-column: span 1;
-        grid-row: span 2; /* Sigue siendo alta verticalmente */
-    }
-
-    .item-4 {
-        grid-column: span 1; 
-        grid-row: span 1;
-    }
-    
-    .item-5 {
-        grid-column: span 2; /* Ocupa todo el ancho al final */
-        grid-row: span 2;
-    }
-}
-
