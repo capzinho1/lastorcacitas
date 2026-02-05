@@ -9,7 +9,7 @@ function setTheme(themeName) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('selectedTheme') || 'rustic';
+    const savedTheme = localStorage.getItem('selectedTheme') || 'colorful';
     setTheme(savedTheme);
 });
 
