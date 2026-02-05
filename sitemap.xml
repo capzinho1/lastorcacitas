@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Página Principal -->
+    <url>
+        <loc>https://lastorcacitas.cl/</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://lastorcacitas.cl/img/piscinagrande.png</image:loc>
+            <image:title>Piscina Grande Las Torcacitas</image:title>
+            <image:caption>Piscina principal del camping Las Torcacitas en Yerbas Buenas</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://lastorcacitas.cl/img/cabañafuera.png</image:loc>
+            <image:title>Cabañas Las Torcacitas</image:title>
+            <image:caption>Cabañas equipadas para familias en Yerbas Buenas</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Sección Cabañas -->
+    <url>
+        <loc>https://lastorcacitas.cl/#cabanas</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Sección Piscinas -->
+    <url>
+        <loc>https://lastorcacitas.cl/#piscinas</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Sección Camping -->
+    <url>
+        <loc>https://lastorcacitas.cl/#camping</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Sección Servicios -->
+    <url>
+        <loc>https://lastorcacitas.cl/#servicios</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Sección Restaurante -->
+    <url>
+        <loc>https://lastorcacitas.cl/#restaurante</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Sección Ubicación -->
+    <url>
+        <loc>https://lastorcacitas.cl/#ubicacion</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+</urlset>
