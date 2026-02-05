@@ -1437,3 +1437,37 @@ ul {
         height: 250px !important;
     }
 }
+
+/* ======================================================
+   CORRECCIÓN PARA FOTOS VERTICALES (Adapter)
+   ====================================================== */
+
+/* 1. Regla para que estas fotos NO se recorten (se ven de lejos) */
+.slider-slide img.foto-vertical {
+    object-fit: contain !important; /* Muestra la foto entera */
+    background-color: #e8e8e8; /* Color de fondo para los espacios vacíos */
+    /* Opcional: Un fondo oscuro si prefieres: background-color: #222; */
+}
+
+/* 2. Ajuste de altura del Slider según el dispositivo */
+
+/* EN COMPUTADOR (Pantalla ancha) */
+/* Mantenemos la altura horizontal, la foto vertical tendrá espacios a los lados */
+.cabin-slider, .restaurant-slider {
+    height: 500px; /* Altura estándar */
+}
+
+/* EN CELULAR (Pantalla vertical) */
+@media (max-width: 768px) {
+    /* Aquí está el truco: Hacemos el slider más "cuadrado/alto" */
+    .cabin-slider, 
+    .restaurant-slider {
+        height: 450px !important; /* Aumentamos altura (antes era 300px o menos) */
+    }
+
+    /* Ajustamos la imagen para que aproveche esa nueva altura */
+    .slider-slide img {
+        height: 100%;
+        width: 100%;
+    }
+}
