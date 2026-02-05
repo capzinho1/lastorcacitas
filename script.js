@@ -31,10 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
 let cabinSliderIndex = 0;
 let poolSliderIndex = 0;
 let restaurantSliderIndex = 0;
+let campingSliderIndex = 0; // Agregado para el camping
 
-// Slider de Cabañas
+// --- Slider de Cabañas ---
 function moveCabinSlider(direction) {
     const track = document.getElementById('cabinSliderTrack');
+    if (!track) return;
+
     const slides = track.querySelectorAll('.slider-slide');
     const totalSlides = slides.length;
     
@@ -52,7 +55,7 @@ function moveCabinSlider(direction) {
     updateSliderDots('cabinSliderDots', cabinSliderIndex, totalSlides);
 }
 
-// Slider de Piscinas
+// --- Slider de Piscinas ---
 function movePoolSlider(direction) {
     const track = document.getElementById('poolSliderTrack');
     if (!track) return;
@@ -82,7 +85,7 @@ function movePoolSlider(direction) {
     updateSliderDots('poolSliderDots', poolSliderIndex, totalSlides);
 }
 
-// Slider de Restaurante
+// --- Slider de Restaurante ---
 function moveRestaurantSlider(direction) {
     const track = document.getElementById('restaurantSliderTrack');
     if (!track) return;
@@ -112,7 +115,29 @@ function moveRestaurantSlider(direction) {
     updateSliderDots('restaurantSliderDots', restaurantSliderIndex, totalSlides);
 }
 
-// Ir a slide específico
+// --- Slider de Camping (NUEVO) ---
+function moveCampingSlider(direction) {
+    const track = document.getElementById('campingSliderTrack');
+    if (!track) return;
+    
+    const slides = track.querySelectorAll('.slider-slide');
+    const totalSlides = slides.length;
+    
+    campingSliderIndex += direction;
+    
+    if (campingSliderIndex < 0) {
+        campingSliderIndex = totalSlides - 1;
+    } else if (campingSliderIndex >= totalSlides) {
+        campingSliderIndex = 0;
+    }
+    
+    const offset = -campingSliderIndex * 100;
+    track.style.transform = `translateX(${offset}%)`;
+    
+    updateSliderDots('campingSliderDots', campingSliderIndex, totalSlides);
+}
+
+// --- Ir a slide específico (Dots) ---
 function goToSlide(sliderType, index) {
     if (sliderType === 'cabin') {
         const track = document.getElementById('cabinSliderTrack');
@@ -122,6 +147,7 @@ function goToSlide(sliderType, index) {
         const offset = -cabinSliderIndex * 100;
         track.style.transform = `translateX(${offset}%)`;
         updateSliderDots('cabinSliderDots', cabinSliderIndex, slides.length);
+
     } else if (sliderType === 'pool') {
         const track = document.getElementById('poolSliderTrack');
         if (!track) return;
@@ -135,6 +161,7 @@ function goToSlide(sliderType, index) {
         const offset = -poolSliderIndex * slideWidth;
         track.style.transform = `translateX(${offset}%)`;
         updateSliderDots('poolSliderDots', poolSliderIndex, slides.length);
+
     } else if (sliderType === 'restaurant') {
         const track = document.getElementById('restaurantSliderTrack');
         if (!track) return;
@@ -148,12 +175,23 @@ function goToSlide(sliderType, index) {
         const offset = -restaurantSliderIndex * slideWidth;
         track.style.transform = `translateX(${offset}%)`;
         updateSliderDots('restaurantSliderDots', restaurantSliderIndex, slides.length);
+
+    } else if (sliderType === 'camping') { // Agregado Camping
+        const track = document.getElementById('campingSliderTrack');
+        if (!track) return;
+        const slides = track.querySelectorAll('.slider-slide');
+        campingSliderIndex = index;
+        const offset = -campingSliderIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+        updateSliderDots('campingSliderDots', campingSliderIndex, slides.length);
     }
 }
 
-// Actualizar indicadores (dots)
+// --- Actualizar indicadores visuales ---
 function updateSliderDots(dotsId, currentIndex, totalSlides) {
     const dotsContainer = document.getElementById(dotsId);
+    if (!dotsContainer) return;
+    
     dotsContainer.innerHTML = '';
     
     for (let i = 0; i < totalSlides; i++) {
@@ -166,62 +204,64 @@ function updateSliderDots(dotsId, currentIndex, totalSlides) {
                 goToSlide('pool', i);
             } else if (dotsId === 'restaurantSliderDots') {
                 goToSlide('restaurant', i);
+            } else if (dotsId === 'campingSliderDots') {
+                goToSlide('camping', i);
             }
         };
         dotsContainer.appendChild(dot);
     }
 }
 
-// Inicializar sliders
+// --- Inicializar todos los sliders ---
 function initSliders() {
+    // Cabañas
     const cabinTrack = document.getElementById('cabinSliderTrack');
-    const poolTrack = document.getElementById('poolSliderTrack');
-    const restaurantTrack = document.getElementById('restaurantSliderTrack');
-    
     if (cabinTrack) {
         const cabinSlides = cabinTrack.querySelectorAll('.slider-slide');
         updateSliderDots('cabinSliderDots', 0, cabinSlides.length);
-        
-        // Auto-play para cabañas (opcional)
-        setInterval(() => {
-            moveCabinSlider(1);
-        }, 5000);
+        // Tiempo reducido a 4250ms (15% menos de 5000)
+        setInterval(() => moveCabinSlider(1), 4250); 
     }
     
+    // Piscinas
+    const poolTrack = document.getElementById('poolSliderTrack');
     if (poolTrack) {
         const poolSlides = poolTrack.querySelectorAll('.slider-slide');
         updateSliderDots('poolSliderDots', 0, poolSlides.length);
         
-        // Resetear índice al cambiar tamaño de ventana
         window.addEventListener('resize', () => {
             poolSliderIndex = 0;
             movePoolSlider(0);
         });
-        
-        // Auto-play para piscinas (opcional)
-        setInterval(() => {
-            movePoolSlider(1);
-        }, 5000);
+        // Tiempo reducido a 4250ms
+        setInterval(() => movePoolSlider(1), 4250);
     }
     
+    // Restaurante
+    const restaurantTrack = document.getElementById('restaurantSliderTrack');
     if (restaurantTrack) {
         const restaurantSlides = restaurantTrack.querySelectorAll('.slider-slide');
         updateSliderDots('restaurantSliderDots', 0, restaurantSlides.length);
         
-        // Resetear índice al cambiar tamaño de ventana
         window.addEventListener('resize', () => {
             restaurantSliderIndex = 0;
             moveRestaurantSlider(0);
         });
-        
-        // Auto-play para restaurante (opcional)
-        setInterval(() => {
-            moveRestaurantSlider(1);
-        }, 5000);
+        // Tiempo reducido a 4250ms
+        setInterval(() => moveRestaurantSlider(1), 4250);
+    }
+
+    // Camping
+    const campingTrack = document.getElementById('campingSliderTrack');
+    if (campingTrack) {
+        const campingSlides = campingTrack.querySelectorAll('.slider-slide');
+        updateSliderDots('campingSliderDots', 0, campingSlides.length);
+        // Tiempo reducido a 4250ms
+        setInterval(() => moveCampingSlider(1), 4250);
     }
 }
 
-// Soporte para gestos táctiles en móviles
+// --- Soporte táctil (Swipe) ---
 function setupTouchSliders() {
     let touchStartX = 0;
     let touchEndX = 0;
@@ -229,6 +269,7 @@ function setupTouchSliders() {
     const cabinSlider = document.querySelector('.cabin-slider');
     const poolSlider = document.querySelector('.pools-slider');
     const restaurantSlider = document.querySelector('.restaurant-slider');
+    const campingSlider = document.querySelector('#camping .cabin-slider'); // Selector específico para camping
     
     function handleSwipe(slider, sliderType) {
         if (!slider) return;
@@ -244,32 +285,25 @@ function setupTouchSliders() {
     }
     
     function handleGesture(sliderType) {
-        if (touchEndX < touchStartX - 50) {
-            // Swipe left
-            if (sliderType === 'cabin') {
-                moveCabinSlider(1);
-            } else if (sliderType === 'pool') {
-                movePoolSlider(1);
-            } else if (sliderType === 'restaurant') {
-                moveRestaurantSlider(1);
-            }
+        if (touchEndX < touchStartX - 50) { // Swipe Left (Siguiente)
+            if (sliderType === 'cabin') moveCabinSlider(1);
+            else if (sliderType === 'pool') movePoolSlider(1);
+            else if (sliderType === 'restaurant') moveRestaurantSlider(1);
+            else if (sliderType === 'camping') moveCampingSlider(1);
         }
         
-        if (touchEndX > touchStartX + 50) {
-            // Swipe right
-            if (sliderType === 'cabin') {
-                moveCabinSlider(-1);
-            } else if (sliderType === 'pool') {
-                movePoolSlider(-1);
-            } else if (sliderType === 'restaurant') {
-                moveRestaurantSlider(-1);
-            }
+        if (touchEndX > touchStartX + 50) { // Swipe Right (Anterior)
+            if (sliderType === 'cabin') moveCabinSlider(-1);
+            else if (sliderType === 'pool') movePoolSlider(-1);
+            else if (sliderType === 'restaurant') moveRestaurantSlider(-1);
+            else if (sliderType === 'camping') moveCampingSlider(-1);
         }
     }
     
     handleSwipe(cabinSlider, 'cabin');
     handleSwipe(poolSlider, 'pool');
     handleSwipe(restaurantSlider, 'restaurant');
+    handleSwipe(campingSlider, 'camping');
 }
 
 
@@ -281,7 +315,6 @@ const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-// Toggle menu móvil
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
@@ -289,7 +322,6 @@ if (menuToggle) {
     });
 }
 
-// Cerrar menu al hacer click en un link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
@@ -297,15 +329,13 @@ navLinks.forEach(link => {
     });
 });
 
-// Cerrar menu al hacer scroll
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
     if (currentScroll > lastScroll && currentScroll > 100) {
         navMenu.classList.remove('active');
+        if(menuToggle) menuToggle.classList.remove('active');
     }
-    
     lastScroll = currentScroll;
 });
 
@@ -328,7 +358,7 @@ window.addEventListener('scroll', () => {
 
 
 // ========================================
-// ANIMACIONES AL SCROLL (INTERSECTION OBSERVER)
+// ANIMACIONES AL SCROLL
 // ========================================
 
 function setupScrollAnimations() {
@@ -346,7 +376,6 @@ function setupScrollAnimations() {
         });
     }, observerOptions);
     
-    // Elementos a animar (excluyendo imágenes y sliders)
     const animatedElements = document.querySelectorAll(`
         .feature-box,
         .service-card,
@@ -357,31 +386,26 @@ function setupScrollAnimations() {
     `);
     
     animatedElements.forEach((el, index) => {
-        // Estado inicial
         el.style.opacity = '0';
         el.style.transform = 'translateY(10px)';
         el.style.transition = 'opacity 0.2s ease-out, transform 0.2s ease-out';
-        el.style.transitionDelay = `${index * 0.01}s`;
-        
+        el.style.transitionDelay = `${index * 0.01}s`; // Pequeño retardo escalonado
         observer.observe(el);
     });
 }
 
 
 // ========================================
-// SMOOTH SCROLL PARA LINKS INTERNOS
+// SMOOTH SCROLL
 // ========================================
 
 function setupSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            
-            // Ignorar href="#"
             if (href === '#') return;
             
             e.preventDefault();
-            
             const target = document.querySelector(href);
             if (target) {
                 const navHeight = document.querySelector('.navbar').offsetHeight;
@@ -398,28 +422,25 @@ function setupSmoothScroll() {
 
 
 // ========================================
-// LAZY LOADING DE IMÁGENES
+// LAZY LOADING
 // ========================================
 
 function setupLazyLoading() {
-    // Excluir imágenes de sliders y imágenes principales
-    const images = document.querySelectorAll('img[src]:not(.slider-slide img):not(.camping-image img)');
+    // Excluir imágenes de sliders para evitar parpadeos en la animación
+    const images = document.querySelectorAll('img[src]:not(.slider-slide img)');
     
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                
-                // Asegurar que la imagen se mantenga visible
                 img.style.opacity = '1';
-                
                 imageObserver.unobserve(img);
             }
         });
     });
     
     images.forEach(img => {
-        img.style.opacity = '1'; // Asegurar que todas las imágenes sean visibles
+        img.style.opacity = '1'; 
         imageObserver.observe(img);
     });
 }
@@ -430,19 +451,10 @@ function setupLazyLoading() {
 // ========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar sliders
     initSliders();
-    
-    // Configurar gestos táctiles
     setupTouchSliders();
-    
-    // Configurar animaciones al scroll
     setupScrollAnimations();
-    
-    // Configurar smooth scroll
     setupSmoothScroll();
-    
-    // Configurar lazy loading (solo para imágenes que no están en sliders)
     setupLazyLoading();
     
     console.log('Las Torcacitas - Sitio web inicializado correctamente ✓');
@@ -450,18 +462,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ========================================
-// UTILIDADES
+// UTILIDADES TEMA DARK (OPCIONAL)
 // ========================================
 
-// Detectar tema del sistema (opcional)
 function detectSystemTheme() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'minimal'; // O el tema que prefieras para modo oscuro
+        return 'minimal'; 
     }
     return 'rustic';
 }
 
-// Aplicar tema del sistema si no hay guardado
 if (!localStorage.getItem('selectedTheme')) {
     const systemTheme = detectSystemTheme();
     setTheme(systemTheme);

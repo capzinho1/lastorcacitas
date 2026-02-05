@@ -89,6 +89,18 @@
                             <div class="slider-slide">
                                 <img src="img/baño.png" alt="Baño de la cabaña">
                             </div>
+                            <div class="slider-slide">
+                                <img src="img/cabañafuera.png" alt="Cabaña afuera">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/camarotes1.png" alt="Cabaña afuera">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/cabañafuera1.png" alt="Cabaña afuera">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="img/sillon.png" alt="Cabaña afuera">
+                            </div>
                         </div>
                     </div>
                     
@@ -316,10 +328,34 @@
 
                     <a href="https://wa.me/56995626217?text=Hola, me interesa la zona de camping" class="btn-primary" target="_blank">Reservar Sitio</a>
                 </div>
-
-                <div class="camping-image">
-                    <img src="img/zonadecamping.png" alt="Zona de Camping Las Torcacitas">
+                <div class="cabin-slider"> <div class="slider-container">
+                    <div class="slider-track" id="campingSliderTrack">
+                        <div class="slider-slide">
+                            <img src="img/zonadecamping.png" alt="Zona de Camping">
+                        </div>
+                        <div class="slider-slide">
+                            <img src="img/areadescanso.png" alt="Área de descanso">
+                        </div>
+                        <div class="slider-slide">
+                            <img src="img/camping.png" alt="Camping familiar">
+                        </div>
+                    </div>
                 </div>
+                
+                <button class="slider-btn slider-btn-prev" onclick="moveCampingSlider(-1)" aria-label="Anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="slider-btn slider-btn-next" onclick="moveCampingSlider(1)" aria-label="Siguiente">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="slider-dots" id="campingSliderDots"></div>
+            </div>
+            </div>
             </div>
         </div>
     </section>
@@ -463,6 +499,9 @@
                     
                         <div class="slider-slide">
                             <img src="img/restorant2.png" alt="Restaurante Las Torcacitas">
+                        </div>
+                        <div class="slider-slide">
+                            <img src="img/restaurant.png" alt="Restaurante Las Torcacitas">
                         </div>
                     </div>
                 </div>
