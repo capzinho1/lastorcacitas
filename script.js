@@ -86,6 +86,7 @@ function movePoolSlider(direction) {
 }
 
 // --- Slider de Restaurante ---
+// --- Slider de Restaurante (CORREGIDO PARA 1 IMAGEN) ---
 function moveRestaurantSlider(direction) {
     const track = document.getElementById('restaurantSliderTrack');
     if (!track) return;
@@ -93,28 +94,22 @@ function moveRestaurantSlider(direction) {
     const slides = track.querySelectorAll('.slider-slide');
     const totalSlides = slides.length;
     
-    // Detectar si estamos en móvil (1 imagen) o escritorio (2 imágenes)
-    const isMobile = window.innerWidth <= 768;
-    const slidesPerView = isMobile ? 1 : 2;
-    const slideWidth = isMobile ? 100 : 50;
+    // Eliminamos la lógica de "isMobile ? 1 : 2". Ahora siempre es 1.
     
     restaurantSliderIndex += direction;
     
-    // Calcular el máximo índice permitido
-    const maxIndex = Math.max(0, totalSlides - slidesPerView);
-    
     if (restaurantSliderIndex < 0) {
-        restaurantSliderIndex = maxIndex;
-    } else if (restaurantSliderIndex > maxIndex) {
+        restaurantSliderIndex = totalSlides - 1;
+    } else if (restaurantSliderIndex >= totalSlides) {
         restaurantSliderIndex = 0;
     }
     
-    const offset = -restaurantSliderIndex * slideWidth;
+    // El desplazamiento siempre es del 100% del ancho
+    const offset = -restaurantSliderIndex * 100;
     track.style.transform = `translateX(${offset}%)`;
     
     updateSliderDots('restaurantSliderDots', restaurantSliderIndex, totalSlides);
 }
-
 // --- Slider de Camping (NUEVO) ---
 function moveCampingSlider(direction) {
     const track = document.getElementById('campingSliderTrack');
@@ -163,16 +158,14 @@ function goToSlide(sliderType, index) {
         updateSliderDots('poolSliderDots', poolSliderIndex, slides.length);
 
     } else if (sliderType === 'restaurant') {
+    } else if (sliderType === 'restaurant') {
         const track = document.getElementById('restaurantSliderTrack');
         if (!track) return;
         const slides = track.querySelectorAll('.slider-slide');
-        const isMobile = window.innerWidth <= 768;
-        const slidesPerView = isMobile ? 1 : 2;
-        const slideWidth = isMobile ? 100 : 50;
-        const maxIndex = Math.max(0, slides.length - slidesPerView);
         
-        restaurantSliderIndex = Math.min(index, maxIndex);
-        const offset = -restaurantSliderIndex * slideWidth;
+        // Simplificado para comportarse igual que las cabañas (1 imagen)
+        restaurantSliderIndex = index;
+        const offset = -restaurantSliderIndex * 100;
         track.style.transform = `translateX(${offset}%)`;
         updateSliderDots('restaurantSliderDots', restaurantSliderIndex, slides.length);
 
@@ -238,18 +231,14 @@ function initSliders() {
     }
     
     // Restaurante
-    const restaurantTrack = document.getElementById('restaurantSliderTrack');
-    if (restaurantTrack) {
-        const restaurantSlides = restaurantTrack.querySelectorAll('.slider-slide');
-        updateSliderDots('restaurantSliderDots', 0, restaurantSlides.length);
-        
-        window.addEventListener('resize', () => {
-            restaurantSliderIndex = 0;
-            moveRestaurantSlider(0);
-        });
-        // Tiempo reducido a 4250ms
-        setInterval(() => moveRestaurantSlider(1), 4250);
-    }
+// Restaurante
+const restaurantTrack = document.getElementById('restaurantSliderTrack');
+if (restaurantTrack) {
+    const restaurantSlides = restaurantTrack.querySelectorAll('.slider-slide');
+    updateSliderDots('restaurantSliderDots', 0, restaurantSlides.length);
+    // Tiempo reducido a 4250ms
+    setInterval(() => moveRestaurantSlider(1), 4250);
+}
 
     // Camping
     const campingTrack = document.getElementById('campingSliderTrack');

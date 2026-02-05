@@ -354,7 +354,7 @@ ul {
     height: 90vh;
     min-height: 750px;
     position: relative;
-    background-image: url('img/fondohero.png');
+    background-image: url('img/fondohero.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

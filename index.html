@@ -490,33 +490,35 @@
             </div>
 
             <!-- Slider de Restaurante -->
-            <div class="restaurant-slider">
-                <div class="slider-container">
-                    <div class="slider-track" id="restaurantSliderTrack">
-                        <div class="slider-slide">
-                            <img src="img/restorant1.png" alt="Restaurante Las Torcacitas">
-                        </div>
+            <div class="cabin-slider"> <div class="slider-container">
+                <div class="slider-track" id="restaurantSliderTrack">
+                    <div class="slider-slide">
+                        <img src="img/restorant1.png" alt="Interior del Restaurante">
+                    </div>
                     
-                        <div class="slider-slide">
-                            <img src="img/restorant2.png" alt="Restaurante Las Torcacitas">
-                        </div>
-                        <div class="slider-slide">
-                            <img src="img/restaurant.png" alt="Restaurante Las Torcacitas">
-                        </div>
+                    <div class="slider-slide">
+                        <img src="img/restorant2.png" alt="Platos preparados">
+                    </div>
+                    
+                    <div class="slider-slide">
+                        <img src="img/restaurant.png" alt="Fachada Restaurante">
                     </div>
                 </div>
-                
-                <!-- Controles del slider -->
-                <button class="slider-btn slider-btn-prev" onclick="moveRestaurantSlider(-1)" aria-label="Anterior">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button class="slider-btn slider-btn-next" onclick="moveRestaurantSlider(1)" aria-label="Siguiente">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
+            </div>
+            
+            <button class="slider-btn slider-btn-prev" onclick="moveRestaurantSlider(-1)" aria-label="Anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="slider-btn slider-btn-next" onclick="moveRestaurantSlider(1)" aria-label="Siguiente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+            
+            <div class="slider-dots" id="restaurantSliderDots"></div>
+        </div>
                 
                 <!-- Indicadores -->
                 <div class="slider-dots" id="restaurantSliderDots"></div>
