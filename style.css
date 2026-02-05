@@ -2,9 +2,8 @@
    SISTEMA DE TEMAS CON VARIABLES CSS
    ======================================== */
 
-/* TEMA 1: RÚSTICO NATURAL - Cálido, acogedor, inspirado en madera y naturaleza */
+/* TEMA 1: RÚSTICO NATURAL */
 .theme-rustic {
-    /* Colores */
     --color-primary: #2D3E28;
     --color-secondary: #6B8E23;
     --color-accent: #D4A574;
@@ -15,30 +14,24 @@
     --color-text-light: #5A5A5A;
     --color-white: #FFFFFF;
     
-    /* Tipografía */
     --font-display: 'Fraunces', serif;
     --font-heading: 'Crimson Pro', serif;
     --font-body: 'DM Sans', sans-serif;
     
-    /* Formas */
     --radius-sm: 4px;
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-xl: 30px;
     
-    /* Sombras */
     --shadow-sm: 0 2px 8px rgba(45, 62, 40, 0.08);
     --shadow-md: 0 8px 24px rgba(45, 62, 40, 0.12);
     --shadow-lg: 0 16px 48px rgba(45, 62, 40, 0.16);
     
-    /* Espaciado */
     --spacing-unit: 8px;
-    
-    /* Efectos */
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* TEMA 2: MINIMALISTA - Limpio, espacioso, tipografía fuerte */
+/* TEMA 2: MINIMALISTA */
 .theme-minimal {
     --color-primary: #000000;
     --color-secondary: #333333;
@@ -67,7 +60,7 @@
     --transition: 0.2s ease;
 }
 
-/* TEMA 3: COLORIDO - Alegre, vibrante, dinámico */
+/* TEMA 3: COLORIDO */
 .theme-colorful {
     --color-primary: #FF6B6B;
     --color-secondary: #4ECDC4;
@@ -381,19 +374,9 @@ ul {
     bottom: -1px;
     left: 0;
     right: 0;
-    
-    /* Mantenemos una altura controlada (ni muy grande ni muy chica) */
     height: 180px;
-    
-    /* LA CLAVE DE LA INVISIBILIDAD: */
-    /* 1. transparent 0%: Empieza invisible. */
-    /* 2. transparent 40%: SE QUEDA invisible casi hasta la mitad. */
-    /* 3. var(--color-bg) 100%: Solo es sólido al llegar al final abajo. */
     background: linear-gradient(to bottom, transparent 0%, transparent 40%, var(--color-bg) 100%);
-    
-    /* El corte diagonal */
     clip-path: polygon(0 40%, 100% 10%, 100% 100%, 0 100%);
-    
     z-index: 2;
     transition: background var(--transition);
     pointer-events: none;
@@ -803,16 +786,16 @@ ul {
 
 
 /* ========================================
-   SLIDER DE PISCINAS (ACTUALIZADO OPCIÓN 3)
+   SLIDER DE PISCINAS (CORREGIDO PARA TEXTO)
    ======================================== */
 
-   .section-piscinas {
+.section-piscinas {
     background: var(--color-bg);
 }
 
 .pools-slider {
     position: relative;
-    /* Aumentamos la altura para lucir fotos verticales */
+    /* Altura suficiente para fotos verticales */
     height: 600px; 
     margin-bottom: 40px;
     box-shadow: var(--shadow-lg);
@@ -839,12 +822,11 @@ ul {
 
 /* ESTILO PARA GALERÍA DE 3 IMÁGENES */
 .pools-slider .slider-slide {
-    /* Aquí está la magia: 3 imágenes por vista en escritorio */
+    /* Muestra 3 imágenes por vista en escritorio */
     min-width: 33.333%; 
     flex-shrink: 0;
     height: 100%;
     position: relative;
-    /* Un pequeño borde blanco entre fotos para separarlas */
     border-right: 1px solid rgba(255,255,255,0.3); 
     box-sizing: border-box;
 }
@@ -856,77 +838,72 @@ ul {
 .pools-slider .slider-slide img {
     width: 100%;
     height: 100%;
-    /* 'cover' asegura que la foto llene el espacio vertical sin deformarse */
     object-fit: cover;
     object-position: center;
     display: block;
     transition: transform 0.5s ease;
 }
 
-/* Efecto Zoom al pasar el mouse por una foto */
 .pools-slider .slider-slide:hover img {
     transform: scale(1.05);
 }
 
-/* Ajuste del Overlay para que quepa en el formato vertical */
-/* Ajuste del Overlay para alinear a la IZQUIERDA */
+/* CORRECCIÓN: Ajuste del Overlay para que el texto NO se corte */
 .pools-slider .slider-slide-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 30px 25px; /* Un poco más de espacio a los lados */
+    /* Reducimos el padding lateral para dar más espacio real al texto */
+    padding: 30px 15px; 
     
-    /* Fondo degradado */
     background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 70%, transparent 100%);
     color: var(--color-white);
     
-    /* CAMBIO CLAVE: Alineación a la izquierda */
+    /* Alineación izquierda para mejor lectura en columnas estrechas */
     text-align: left; 
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinea los elementos al inicio (izquierda) */
+    align-items: flex-start;
     justify-content: flex-end;
     
     box-sizing: border-box;
     width: 100%;
-    overflow: hidden;
+    
+    /* Importante: permite ver el contenido si sobresale un poco */
+    overflow: visible; 
 }
 
 .pools-slider .slider-slide-overlay h3 {
     font-family: var(--font-display);
-    font-size: 22px;
+    /* Tamaño dinámico: se achica automáticamente si falta espacio */
+    font-size: clamp(18px, 2.5vw, 24px); 
     font-weight: 700;
     color: var(--color-white);
     margin-bottom: 8px;
     
-    /* CAMBIO CLAVE: Quitar margen automático y alinear a izquierda */
     text-align: left;
     width: 100%;
     margin-left: 0; 
-    margin-right: 0;
     
-    padding: 0;
-    box-sizing: border-box;
+    /* Forzar salto de línea si la palabra es muy larga */
+    white-space: normal;
     word-wrap: break-word;
+    hyphens: auto;
 }
 
 .pools-slider .slider-slide-overlay p {
-    font-size: 14px;
+    font-size: clamp(13px, 1.5vw, 15px);
     opacity: 0.9;
     line-height: 1.4;
     
-    /* CAMBIO CLAVE: Alinear a izquierda */
     text-align: left;
     width: 100%;
     margin-left: 0;
     
-    padding: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Permitir hasta 3 líneas para que no se corte */
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    /* Asegurar que el texto baje de línea */
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 /* RESPONSIVE: VOLVER A 1 IMAGEN EN MÓVILES */
@@ -942,22 +919,21 @@ ul {
     }
 
     .pools-slider .slider-slide-overlay {
-        padding: 25px 15px;
+        padding: 25px 20px;
     }
     
+    /* En móvil podemos centrar porque hay espacio de sobra */
     .pools-slider .slider-slide-overlay h3 {
         font-size: 28px;
         text-align: center;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
     }
     
     .pools-slider .slider-slide-overlay p {
         text-align: center;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+    }
+    
+    .pools-slider .slider-slide-overlay {
+        align-items: center;
     }
 }
 
@@ -1639,7 +1615,7 @@ ul {
         bottom: 15px;
         right: 15px;
         padding: 6px;
-        transform: scale(0.9); 
+        transform: scale(0.9);
     }
 }
 
