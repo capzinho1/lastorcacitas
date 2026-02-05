@@ -4,60 +4,60 @@
 
 /* TEMA 1: RÚSTICO NATURAL */
 .theme-rustic {
-    --color-primary: #2D3E28;
-    --color-secondary: #6B8E23;
-    --color-accent: #D4A574;
-    --color-accent-light: #E8C9A0;
-    --color-bg: #FBF8F3;
-    --color-bg-alt: #F0EBE3;
-    --color-text: #2C2C2C;
-    --color-text-light: #5A5A5A;
+    --color-primary: #FF6B6B;
+    --color-secondary: #4ECDC4;
+    --color-accent: #FFE66D;
+    --color-accent-light: #FFF4A3;
+    --color-bg: #FFF9F0;
+    --color-bg-alt: #E8F4F8;
+    --color-text: #2C3E50;
+    --color-text-light: #5D6D7E;
     --color-white: #FFFFFF;
     
-    --font-display: 'Fraunces', serif;
-    --font-heading: 'Crimson Pro', serif;
+    --font-display: 'Nunito', sans-serif;
+    --font-heading: 'Nunito', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     
-    --radius-sm: 4px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 30px;
+    --radius-sm: 12px;
+    --radius-md: 24px;
+    --radius-lg: 36px;
+    --radius-xl: 50px;
     
-    --shadow-sm: 0 2px 8px rgba(45, 62, 40, 0.08);
-    --shadow-md: 0 8px 24px rgba(45, 62, 40, 0.12);
-    --shadow-lg: 0 16px 48px rgba(45, 62, 40, 0.16);
+    --shadow-sm: 0 4px 12px rgba(255, 107, 107, 0.15);
+    --shadow-md: 0 8px 24px rgba(255, 107, 107, 0.2);
+    --shadow-lg: 0 16px 48px rgba(255, 107, 107, 0.25);
     
-    --spacing-unit: 8px;
-    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --spacing-unit: 10px;
+    --transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* TEMA 2: MINIMALISTA */
 .theme-minimal {
-    --color-primary: #000000;
-    --color-secondary: #333333;
-    --color-accent: #666666;
-    --color-accent-light: #999999;
-    --color-bg: #FFFFFF;
-    --color-bg-alt: #F5F5F5;
-    --color-text: #1A1A1A;
-    --color-text-light: #666666;
+    --color-primary: #FF6B6B;
+    --color-secondary: #4ECDC4;
+    --color-accent: #FFE66D;
+    --color-accent-light: #FFF4A3;
+    --color-bg: #FFF9F0;
+    --color-bg-alt: #E8F4F8;
+    --color-text: #2C3E50;
+    --color-text-light: #5D6D7E;
     --color-white: #FFFFFF;
     
-    --font-display: 'Archivo', sans-serif;
-    --font-heading: 'Archivo', sans-serif;
+    --font-display: 'Nunito', sans-serif;
+    --font-heading: 'Nunito', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     
-    --radius-sm: 0px;
-    --radius-md: 0px;
-    --radius-lg: 0px;
-    --radius-xl: 0px;
+    --radius-sm: 12px;
+    --radius-md: 24px;
+    --radius-lg: 36px;
+    --radius-xl: 50px;
     
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.10);
+    --shadow-sm: 0 4px 12px rgba(255, 107, 107, 0.15);
+    --shadow-md: 0 8px 24px rgba(255, 107, 107, 0.2);
+    --shadow-lg: 0 16px 48px rgba(255, 107, 107, 0.25);
     
-    --spacing-unit: 12px;
-    --transition: 0.2s ease;
+    --spacing-unit: 10px;
+    --transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* TEMA 3: COLORIDO */
