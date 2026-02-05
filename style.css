@@ -1385,13 +1385,7 @@ ul {
         background: rgba(255, 255, 255, 0.6);
     }
     
-    /* SELECTOR DE TEMAS */
-    .theme-selector {
-        bottom: 15px;
-        right: 15px;
-        padding: 6px;
-        transform: scale(0.9);
-    }
+ 
     
     /* MOSAICO RESPONSIVE */
     .mosaic-grid {
