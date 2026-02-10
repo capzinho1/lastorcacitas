@@ -174,25 +174,32 @@ ul {
     align-items: center;
 }
 
+/* Nuevo estilo para el logo en 2 líneas */
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
-    transition: transform var(--transition);
+    gap: 10px; /* Espacio entre imagen y texto */
+    text-decoration: none; /* Quitar subrayado si lo tuviera */
 }
 
-.logo:hover {
-    transform: scale(1.02);
+.logo-text-container {
+    display: flex;
+    flex-direction: column; /* Pone uno sobre otro */
+    line-height: 1.1; /* Juntar un poco las líneas */
+    justify-content: center;
 }
 
-.logo-img {
-    height: 50px;
-    width: auto;
+.logo-subtitle {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-accent); /* O un gris suave */
 }
 
-.logo-text {
+.logo-title {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: 20px; /* Un poco más grande para destacar */
     font-weight: 800;
     color: var(--color-primary);
 }
